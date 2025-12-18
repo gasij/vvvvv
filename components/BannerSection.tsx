@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { motion } from 'framer-motion';
 
 // Иконки социальных сетей
 const TelegramIcon = () => (
@@ -25,7 +26,7 @@ const XIcon = () => (
 
 const BannerSection: React.FC = () => {
   return (
-    <section className="py-40 px-6 relative overflow-hidden">
+    <section className="py-20 md:py-40 px-4 sm:px-6 relative overflow-hidden">
        {/* Stars/Dust particles approximation */}
        <div className="absolute inset-0 opacity-20 pointer-events-none">
           {Array.from({length: 40}).map((_, i) => (
@@ -42,33 +43,76 @@ const BannerSection: React.FC = () => {
        </div>
 
        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="mb-12 flex justify-center">
-             <div className="w-32 h-32 relative">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8, rotate: -180 }}
+            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, type: "spring" }}
+            className="mb-8 md:mb-12 flex justify-center"
+          >
+             <div className="w-24 h-24 md:w-32 md:h-32 relative">
                 <div className="absolute inset-0 border-2 border-white/10 rounded-2xl rotate-45"></div>
                 <div className="absolute inset-4 border border-white/20 rounded-xl -rotate-12"></div>
                 <div className="absolute inset-0 flex items-center justify-center">
-                   <div className="w-10 h-10 bg-white/5 blur-sm"></div>
+                   <div className="w-8 h-8 md:w-10 md:h-10 bg-white/5 blur-sm"></div>
                 </div>
              </div>
-          </div>
+          </motion.div>
 
-          <h2 className="text-5xl md:text-6xl font-bold mb-8 tracking-tight">
+          <motion.h2 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 tracking-tight px-4"
+          >
             Onion AI переопределяет вычисления как живую инфраструктуру...
-          </h2>
-          <p className="text-white/40 text-sm max-w-xl mx-auto mb-12">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-white/40 text-xs md:text-sm max-w-xl mx-auto mb-8 md:mb-12 px-4"
+          >
             На базе CORA агенты развиваются через слои, протоколы и время — превращая MCP из конечных точек в системы действий.
-          </p>
+          </motion.p>
 
-          <div className="flex items-center justify-center gap-8">
-            <button className="px-8 py-3 rounded-full bg-white text-black font-bold hover:scale-105 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-8"
+          >
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-6 md:px-8 py-2 md:py-3 rounded-full bg-white text-black font-bold text-sm md:text-base hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-shadow"
+            >
               Читать техническую документацию
-            </button>
-            <div className="flex items-center gap-6 text-white opacity-60">
-               <span className="cursor-pointer hover:opacity-100 transition-opacity"><TelegramIcon /></span>
-               <span className="cursor-pointer hover:opacity-100 transition-opacity"><XIcon /></span>
-               <span className="cursor-pointer hover:opacity-100 transition-opacity"><MediumIcon /></span>
+            </motion.button>
+            <div className="flex items-center gap-4 md:gap-6 text-white opacity-60">
+               <motion.span 
+                 whileHover={{ scale: 1.2 }}
+                 className="cursor-pointer hover:opacity-100 transition-opacity"
+               >
+                 <TelegramIcon />
+               </motion.span>
+               <motion.span 
+                 whileHover={{ scale: 1.2 }}
+                 className="cursor-pointer hover:opacity-100 transition-opacity"
+               >
+                 <XIcon />
+               </motion.span>
+               <motion.span 
+                 whileHover={{ scale: 1.2 }}
+                 className="cursor-pointer hover:opacity-100 transition-opacity"
+               >
+                 <MediumIcon />
+               </motion.span>
             </div>
-          </div>
+          </motion.div>
        </div>
     </section>
   );

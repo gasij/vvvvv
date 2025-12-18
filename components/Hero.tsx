@@ -5,7 +5,7 @@ import { OnionLogo } from '../constants';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative pt-32 pb-20 px-6 text-center overflow-hidden">
+    <section className="relative pt-24 md:pt-32 pb-16 md:pb-20 px-4 sm:px-6 text-center overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full opacity-20 pointer-events-none -z-10">
          <svg className="w-full h-full" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg">
             <motion.path 
@@ -39,7 +39,7 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-5xl md:text-7xl font-bold tracking-tight mb-8 leading-[1.1]"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight mb-6 md:mb-8 leading-[1.1] px-4"
         >
           Модульные вычисления <br /> На базе движка CORA.
         </motion.h1>
@@ -48,7 +48,7 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="text-xl md:text-2xl text-white/60 font-light mb-12 max-w-2xl mx-auto"
+          className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/60 font-light mb-8 md:mb-12 max-w-2xl mx-auto px-4"
         >
           Голосовое управление. Осведомленность о блокчейне. Масштабируемость.
         </motion.p>
@@ -57,7 +57,7 @@ const Hero: React.FC = () => {
           <motion.button 
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-10 py-4 rounded-full bg-white text-black font-bold text-lg hover:shadow-[0_0_50px_rgba(255,255,255,0.5)] transition-shadow"
+            className="px-6 md:px-10 py-3 md:py-4 rounded-full bg-white text-black font-bold text-sm md:text-lg hover:shadow-[0_0_50px_rgba(255,255,255,0.5)] transition-shadow"
           >
             Войти в движок MCP
           </motion.button>
@@ -69,8 +69,8 @@ const Hero: React.FC = () => {
             className="relative"
           >
             <div className="absolute inset-0 bg-white/20 blur-[60px] rounded-full scale-150 animate-pulse"></div>
-            <div className="relative w-24 h-24 rounded-3xl bg-black border border-white/20 flex items-center justify-center shadow-2xl animate-float">
-              <OnionLogo className="w-12 h-12" />
+            <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-3xl bg-black border border-white/20 flex items-center justify-center shadow-2xl animate-float">
+              <OnionLogo className="w-10 h-10 md:w-12 md:h-12" />
             </div>
           </motion.div>
         </div>

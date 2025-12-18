@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { motion } from 'framer-motion';
 
 // Иконки для IntroSection
 const MarketplaceIcon = () => (
@@ -34,30 +35,49 @@ const ProtocolIcon = () => (
 
 const IntroSection: React.FC = () => {
   return (
-    <section id="intro" className="py-32 px-6">
+    <section id="intro" className="py-20 md:py-32 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-[10px] uppercase tracking-widest text-white/50 mb-6">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12 md:mb-20"
+        >
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-[10px] uppercase tracking-widest text-white/50 mb-6"
+          >
             Введение
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Что такое Onion AI?</h2>
-          <p className="max-w-2xl mx-auto text-white/50 text-sm leading-relaxed">
+          </motion.div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6">Что такое Onion AI?</h2>
+          <p className="max-w-2xl mx-auto text-white/50 text-sm leading-relaxed px-4">
             Голосовой модульный протокол вычислений (MCP), построенный на CORA — объединяющий реальные платформы, такие как GitHub и Maps, с ончейн-логикой.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {[
             { title: "Децентрализованный маркетплейс MCP", icon: <MarketplaceIcon /> },
             { title: "Выполнение в реальном времени через голос", icon: <VoiceIcon /> },
             { title: "Протокольный слой для взаимодействия блокчейнов и приложений", icon: <ProtocolIcon /> }
           ].map((item, i) => (
-            <div key={i} className="p-8 rounded-3xl card-gradient flex items-center gap-6">
-              <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-white border border-white/10 shrink-0">
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="p-6 md:p-8 rounded-3xl card-gradient flex flex-col sm:flex-row items-start sm:items-center gap-4 md:gap-6 hover:scale-[1.02] transition-transform"
+            >
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/5 flex items-center justify-center text-white border border-white/10 shrink-0">
                 {item.icon}
               </div>
-              <h3 className="text-lg font-semibold leading-snug">{item.title}</h3>
-            </div>
+              <h3 className="text-base md:text-lg font-semibold leading-snug">{item.title}</h3>
+            </motion.div>
           ))}
         </div>
       </div>

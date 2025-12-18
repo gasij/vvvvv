@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { OnionLogo } from '../constants';
 
 // Иконки социальных сетей
@@ -40,19 +41,25 @@ const EmailIcon = () => (
 
 const Footer: React.FC = () => {
   return (
-    <footer className="pt-32 pb-12 px-6 border-t border-white/5 bg-black">
+    <footer className="pt-20 md:pt-32 pb-8 md:pb-12 px-4 sm:px-6 border-t border-white/5 bg-black">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20">
-          <div className="md:col-span-4">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-12 mb-12 md:mb-20"
+        >
+          <div className="lg:col-span-4">
             <div className="mb-6">
               <OnionLogo className="w-8 h-8" showText={true} />
             </div>
             <p className="text-white/40 text-xs mb-1">© 2025 Onion AI. All Rights Reserved.</p>
           </div>
 
-          <div className="md:col-span-2">
-            <h4 className="text-sm font-bold mb-6">Навигация</h4>
-            <ul className="space-y-4 text-sm text-white/40">
+          <div className="lg:col-span-2">
+            <h4 className="text-sm font-bold mb-4 md:mb-6">Навигация</h4>
+            <ul className="space-y-3 md:space-y-4 text-sm text-white/40">
               <li><a href="#" className="hover:text-white transition-colors">О нас</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Как это работает</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Что мы предлагаем</a></li>
@@ -61,9 +68,9 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          <div className="md:col-span-2">
-            <h4 className="text-sm font-bold mb-6">Информация</h4>
-            <ul className="space-y-4 text-sm text-white/40">
+          <div className="lg:col-span-2">
+            <h4 className="text-sm font-bold mb-4 md:mb-6">Информация</h4>
+            <ul className="space-y-3 md:space-y-4 text-sm text-white/40">
               <li><a href="#" className="hover:text-white transition-colors">Дорожная карта</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Токеномика</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Документация</a></li>
@@ -71,21 +78,46 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          <div className="md:col-span-4">
-            <h4 className="text-sm font-bold mb-6">Социальные сети</h4>
-            <div className="flex items-center gap-6 text-white opacity-40 mb-6">
-               <span className="cursor-pointer hover:opacity-100 transition-opacity"><TelegramIcon /></span>
-               <span className="cursor-pointer hover:opacity-100 transition-opacity"><MediumIcon /></span>
-               <span className="cursor-pointer hover:opacity-100 transition-opacity"><XIcon /></span>
-               <span className="cursor-pointer hover:opacity-100 transition-opacity"><ShieldIcon /></span>
-               <span className="cursor-pointer hover:opacity-100 transition-opacity"><EmailIcon /></span>
+          <div className="lg:col-span-4">
+            <h4 className="text-sm font-bold mb-4 md:mb-6">Социальные сети</h4>
+            <div className="flex items-center gap-4 md:gap-6 text-white opacity-40 mb-4 md:mb-6">
+               <motion.span 
+                 whileHover={{ scale: 1.2 }}
+                 className="cursor-pointer hover:opacity-100 transition-opacity"
+               >
+                 <TelegramIcon />
+               </motion.span>
+               <motion.span 
+                 whileHover={{ scale: 1.2 }}
+                 className="cursor-pointer hover:opacity-100 transition-opacity"
+               >
+                 <MediumIcon />
+               </motion.span>
+               <motion.span 
+                 whileHover={{ scale: 1.2 }}
+                 className="cursor-pointer hover:opacity-100 transition-opacity"
+               >
+                 <XIcon />
+               </motion.span>
+               <motion.span 
+                 whileHover={{ scale: 1.2 }}
+                 className="cursor-pointer hover:opacity-100 transition-opacity"
+               >
+                 <ShieldIcon />
+               </motion.span>
+               <motion.span 
+                 whileHover={{ scale: 1.2 }}
+                 className="cursor-pointer hover:opacity-100 transition-opacity"
+               >
+                 <EmailIcon />
+               </motion.span>
             </div>
-            <ul className="space-y-4 text-sm text-white/40">
+            <ul className="space-y-3 md:space-y-4 text-sm text-white/40">
               <li><a href="#" className="hover:text-white transition-colors">Telegram</a></li>
               <li><a href="#" className="hover:text-white transition-colors">X (бывший Twitter)</a></li>
             </ul>
           </div>
-        </div>
+        </motion.div>
 
         <div className="pt-12 border-t border-white/5 text-center">
            <div className="w-full h-[300px] glow-bg opacity-30 pointer-events-none -mt-32"></div>

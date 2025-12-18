@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { motion } from 'framer-motion';
 
 // Иконки для случаев использования
 const SurveillanceIcon = () => (
@@ -51,60 +52,90 @@ const AutomationIcon = () => (
 
 const UseCases: React.FC = () => {
   return (
-    <section id="use-cases" className="py-32 px-6 bg-black relative">
-       <div className="absolute right-0 bottom-0 w-[500px] h-[500px] bg-white/[0.02] blur-[100px] rounded-full"></div>
+    <section id="use-cases" className="py-20 md:py-32 px-4 sm:px-6 bg-black relative">
+       <div className="absolute right-0 bottom-0 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-white/[0.02] blur-[100px] rounded-full"></div>
       
       <div className="max-w-7xl mx-auto">
-        <div className="mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-[10px] uppercase tracking-widest text-white/50 mb-6">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 md:mb-16"
+        >
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-[10px] uppercase tracking-widest text-white/50 mb-6"
+          >
             Развертывайте агентов, которые действуют
-          </div>
-          <h2 className="text-5xl font-bold mb-6">Случаи использования</h2>
+          </motion.div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6">Случаи использования</h2>
           <p className="text-white/50 text-sm max-w-xl">
             Реальные сценарии, где модульные MCP Onion AI превращают интеллект в выполнение:
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-y-12 gap-x-12 p-12 rounded-3xl card-gradient">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-y-12 md:gap-x-12 p-6 md:p-12 rounded-3xl card-gradient"
+        >
            <UseCaseItem 
+              index={0}
               title="Наблюдение, активируемое намерением" 
               desc="Запускайте агентов с голосовым управлением для мониторинга ончейн-аномалий и запуска ответных действий."
               icon={<SurveillanceIcon />}
            />
            <UseCaseItem 
+              index={1}
               title="Композируемые цепочки агентов" 
               desc="Объединяйте MCP в конвейеры действий (например, GitHub > Запуск > Валидация > Отправка)."
               icon={<ChainIcon />}
            />
            <UseCaseItem 
+              index={2}
               title="Интерфейсирование с протоколами в реальном времени" 
               desc="Запрашивайте или изменяйте реальные API и смарт-контракты через голосовой ввод."
               icon={<ProtocolIcon />}
            />
            <UseCaseItem 
+              index={3}
               title="Искусственный интеллект для пространственного анализа" 
               desc="Активируйте агентов для маршрутизации, расчета и оптимизации пространственных данных."
               icon={<LocationIcon />}
            />
            <UseCaseItem 
+              index={4}
               title="Автоматизация потоков контрактов" 
               desc="Автоматизируйте создание, тестирование и развертывание контрактов с минимальным вмешательством."
               icon={<AutomationIcon />}
            />
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 };
 
-const UseCaseItem = ({ title, desc, icon }: any) => (
-  <div className="space-y-4">
+const UseCaseItem = ({ title, desc, icon, index = 0 }: any) => (
+  <motion.div 
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-50px" }}
+    transition={{ duration: 0.5, delay: index * 0.1 }}
+    whileHover={{ scale: 1.05, y: -5 }}
+    className="space-y-4"
+  >
     <div className="text-white/80 flex items-center justify-start">
       {icon}
     </div>
-    <h3 className="text-xl font-bold">{title}</h3>
-    <p className="text-sm text-white/40 leading-relaxed">{desc}</p>
-  </div>
+    <h3 className="text-lg md:text-xl font-bold">{title}</h3>
+    <p className="text-xs md:text-sm text-white/40 leading-relaxed">{desc}</p>
+  </motion.div>
 );
 
 export default UseCases;
