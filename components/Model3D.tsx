@@ -5,12 +5,18 @@ import * as THREE from 'three';
 
 // Компонент для загрузки и отображения модели
 function Model({ url }: { url: string }) {
-  const { scene } = useGLTF(url);
+  const gltf = useGLTF(url);
+  const scene = gltf.scene;
   
   // Клонируем сцену для избежания проблем с переиспользованием
   const clonedScene = useMemo(() => {
     if (!scene) return null;
-    return scene.clone();
+    try {
+      return scene.clone();
+    } catch (e) {
+      console.error('Error cloning scene:', e);
+      return scene;
+    }
   }, [scene]);
   
   useEffect(() => {
@@ -38,7 +44,7 @@ function Model({ url }: { url: string }) {
 
   if (!clonedScene) return null;
 
-  return <primitive object={clonedScene} scale={0.7} />;
+  return <primitive object={clonedScene} scale={0.3} />;
 }
 
 // Компонент загрузки
@@ -76,7 +82,7 @@ const Model3D: React.FC<Model3DProps> = ({
   return (
     <div className={`relative ${className}`}>
       <Canvas
-        camera={{ position: [0, 0, 4], fov: 45 }}
+        camera={{ position: [0, 0, 8], fov: 50 }}
         gl={{ 
           antialias: true,
           alpha: true,
@@ -103,8 +109,8 @@ const Model3D: React.FC<Model3DProps> = ({
             enablePan={false}
             autoRotate={autoRotate}
             autoRotateSpeed={0.5}
-            minDistance={3}
-            maxDistance={10}
+            minDistance={5}
+            maxDistance={15}
             enableDamping
             dampingFactor={0.05}
           />

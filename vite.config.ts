@@ -21,6 +21,7 @@ export default defineConfig(({ mode }) => {
       },
       optimizeDeps: {
         include: ['three', '@react-three/fiber', '@react-three/drei']
-      }
+      },
+      assetsInclude: ['**/*.glb', '**/*.gltf']
     };
 });
